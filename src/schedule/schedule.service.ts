@@ -18,7 +18,7 @@ export class ScheduleService {
     return this.scheduleRepository.findOneBy({ id });
   }
 
-  async remove(id: string): Promise<void> {
+  async delete(id: string): Promise<void> {
     await this.scheduleRepository.delete(id);
   }
 

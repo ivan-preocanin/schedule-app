@@ -1,5 +1,10 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+export enum TaskType {
+  Work = 'work',
+  Break = 'break',
+}
+
 @Entity()
 export class Task {
   @PrimaryGeneratedColumn('uuid')
@@ -17,6 +22,6 @@ export class Task {
   @Column()
   duration: number;
 
-  @Column()
+  @Column({ enum: [TaskType.Work, TaskType.Break] })
   type: string;
 }

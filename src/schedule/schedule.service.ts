@@ -9,4 +9,20 @@ export class ScheduleService {
     @InjectRepository(Schedule)
     private scheduleRepository: Repository<Schedule>,
   ) {}
+
+  findAll(): Promise<Schedule[]> {
+    return this.scheduleRepository.find();
+  }
+
+  findOne(id: string): Promise<Schedule> {
+    return this.scheduleRepository.findOneBy({ id });
+  }
+
+  async remove(id: string): Promise<void> {
+    await this.scheduleRepository.delete(id);
+  }
+
+  async create(schedule: Schedule): Promise<Schedule> {
+    return await this.scheduleRepository.save(schedule);
+  }
 }

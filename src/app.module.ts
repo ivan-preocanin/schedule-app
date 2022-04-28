@@ -2,9 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Schedule } from './schedule/schedule.entity';
 import { ScheduleModule } from './schedule/schedule.module';
-import { Task } from './task/task.entity';
 import { TaskModule } from './task/task.module';
 
 @Module({
@@ -16,8 +14,7 @@ import { TaskModule } from './task/task.module';
       username: 'postgres',
       password: 'postgres',
       database: 'postgres',
-      // entities: ['dist/**/*.entity{.ts,.js}'],
-      entities: [Schedule, Task],
+      entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
       autoLoadEntities: true,
     }),

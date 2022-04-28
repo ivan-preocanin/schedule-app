@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Schedule } from 'src/schedule/schedule.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum TaskType {
   Work = 'work',
@@ -24,4 +25,7 @@ export class Task {
 
   @Column({ enum: [TaskType.Work, TaskType.Break] })
   type: string;
+
+  @ManyToOne(() => Schedule, (schedule) => schedule.tasks)
+  schedule: Schedule;
 }

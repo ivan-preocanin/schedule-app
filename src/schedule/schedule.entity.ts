@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Task } from 'src/task/task.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Schedule {
@@ -16,4 +17,9 @@ export class Schedule {
 
   @Column()
   endTime: Date;
+
+  @OneToMany(() => Task, (task) => task.schedule, {
+    onDelete: 'CASCADE',
+  })
+  tasks: Task[];
 }

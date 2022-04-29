@@ -11,11 +11,14 @@ export class ScheduleService {
   ) {}
 
   findAll(): Promise<Schedule[]> {
-    return this.scheduleRepository.find();
+    return this.scheduleRepository.find({ relations: { tasks: true } });
   }
 
   findOne(id: string): Promise<Schedule> {
-    return this.scheduleRepository.findOneBy({ id });
+    return this.scheduleRepository.findOne({
+      where: { id: id },
+      relations: { tasks: true },
+    });
   }
 
   async delete(id: string): Promise<void> {

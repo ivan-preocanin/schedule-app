@@ -18,8 +18,8 @@ export class TaskController {
   }
 
   @Post(ApiEndpoint.TASK.CREATE)
-  create(@Body() schedule: Task): Promise<Task> {
-    return this.taskService.create(schedule);
+  create(@Body() task: Task): Promise<Task> {
+    return this.taskService.create(task);
   }
 
   @Delete(ApiEndpoint.TASK.DELETE)

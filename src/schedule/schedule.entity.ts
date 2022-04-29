@@ -18,8 +18,6 @@ export class Schedule {
   @Column()
   endTime: Date;
 
-  @OneToMany(() => Task, (task) => task.schedule, {
-    onDelete: 'CASCADE',
-  })
+  @OneToMany(() => Task, (task) => task.schedule)
   tasks: Task[];
 }

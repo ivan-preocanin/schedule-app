@@ -12,13 +12,13 @@ export class Task {
   id: string;
 
   @Column()
-  account_id: number;
+  accountId: number;
 
   @Column()
-  schedule_id: string;
+  scheduleId: string;
 
   @Column()
-  start_time: Date;
+  startTime: Date;
 
   @Column()
   duration: number;
@@ -26,6 +26,8 @@ export class Task {
   @Column({ enum: [TaskType.Work, TaskType.Break] })
   type: string;
 
-  @ManyToOne(() => Schedule, (schedule) => schedule.tasks)
+  @ManyToOne(() => Schedule, (schedule) => schedule.tasks, {
+    onDelete: 'CASCADE',
+  })
   schedule: Schedule;
 }

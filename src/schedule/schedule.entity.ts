@@ -1,5 +1,5 @@
-import { Task } from 'src/task/task.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Task } from '../task/task.entity';
 
 @Entity()
 export class Schedule {

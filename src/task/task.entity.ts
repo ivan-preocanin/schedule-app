@@ -1,5 +1,5 @@
-import { Schedule } from 'src/schedule/schedule.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Schedule } from '../schedule/schedule.entity';
 
 export enum TaskType {
   Work = 'work',

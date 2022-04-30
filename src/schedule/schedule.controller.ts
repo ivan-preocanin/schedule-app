@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Post, Query } from '@nestjs/common';
 import { ApiEndpoint } from '../util';
+import { CreateScheduleDto } from './schedule.dto';
 import { Schedule } from './schedule.entity';
 import { ScheduleService } from './schedule.service';
 
@@ -18,8 +19,8 @@ export class ScheduleController {
   }
 
   @Post(ApiEndpoint.SCHEDULE.CREATE)
-  create(@Body() schedule: Schedule): Promise<Schedule> {
-    return this.scheduleService.create(schedule);
+  create(@Body() createScheduleDto: CreateScheduleDto): Promise<Schedule> {
+    return this.scheduleService.create(createScheduleDto);
   }
 
   @Delete(ApiEndpoint.SCHEDULE.DELETE)

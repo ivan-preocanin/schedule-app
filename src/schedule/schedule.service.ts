@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { CreateScheduleDto } from './schedule.dto';
 import { Schedule } from './schedule.entity';
 
 @Injectable()
@@ -25,7 +26,7 @@ export class ScheduleService {
     await this.scheduleRepository.delete(id);
   }
 
-  async create(schedule: Schedule): Promise<Schedule> {
-    return await this.scheduleRepository.save(schedule);
+  async create(createScheduleDto: CreateScheduleDto): Promise<Schedule> {
+    return await this.scheduleRepository.save(createScheduleDto);
   }
 }

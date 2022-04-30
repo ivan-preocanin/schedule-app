@@ -13,11 +13,6 @@ export class TaskController {
     return this.taskService.findOne(findOneTaskDto.id);
   }
 
-  @Get(ApiEndpoint.TASK.FIND_BY_SCHEDULE_ID)
-  findByScheduleId(@Query('scheduleId') scheduleId: string): Promise<Task[]> {
-    return this.taskService.findByScheduleId(scheduleId);
-  }
-
   @Post(ApiEndpoint.TASK.CREATE)
   create(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
     return this.taskService.create(createTaskDto);

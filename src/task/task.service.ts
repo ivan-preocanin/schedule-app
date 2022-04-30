@@ -11,10 +11,6 @@ export class TaskService {
     private taskRepository: Repository<Task>,
   ) {}
 
-  findByScheduleId(scheduleId: string): Promise<Task[]> {
-    return this.taskRepository.findBy({ scheduleId: scheduleId });
-  }
-
   findOne(id: string): Promise<Task> {
     return this.taskRepository.findOneBy({ id });
   }

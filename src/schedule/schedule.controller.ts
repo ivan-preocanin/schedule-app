@@ -1,6 +1,10 @@
 import { Body, Controller, Delete, Get, Post, Query } from '@nestjs/common';
 import { ApiEndpoint } from '../util';
-import { CreateScheduleDto } from './schedule.dto';
+import {
+  CreateScheduleDto,
+  DeleteScheduleDto,
+  FindOneScheduleDto,
+} from './schedule.dto';
 import { Schedule } from './schedule.entity';
 import { ScheduleService } from './schedule.service';
 
@@ -14,8 +18,8 @@ export class ScheduleController {
   }
 
   @Get(ApiEndpoint.SCHEDULE.FIND_ONE)
-  findOne(@Query('id') id: string): Promise<Schedule> {
-    return this.scheduleService.findOne(id);
+  findOne(@Query() findOneScheduleDto: FindOneScheduleDto): Promise<Schedule> {
+    return this.scheduleService.findOne(findOneScheduleDto.id);
   }
 
   @Post(ApiEndpoint.SCHEDULE.CREATE)
@@ -24,7 +28,7 @@ export class ScheduleController {
   }
 
   @Delete(ApiEndpoint.SCHEDULE.DELETE)
-  delete(@Query('id') id: string): Promise<void> {
-    return this.scheduleService.delete(id);
+  delete(@Query() deleteScheduleDto: DeleteScheduleDto): Promise<void> {
+    return this.scheduleService.delete(deleteScheduleDto.id);
   }
 }

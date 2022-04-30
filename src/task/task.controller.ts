@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Post, Query } from '@nestjs/common';
 import { ApiEndpoint } from '../util';
+import { CreateTaskDto } from './task.dto';
 import { Task } from './task.entity';
 import { TaskService } from './task.service';
 
@@ -18,8 +19,8 @@ export class TaskController {
   }
 
   @Post(ApiEndpoint.TASK.CREATE)
-  create(@Body() task: Task): Promise<Task> {
-    return this.taskService.create(task);
+  create(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
+    return this.taskService.create(createTaskDto);
   }
 
   @Delete(ApiEndpoint.TASK.DELETE)

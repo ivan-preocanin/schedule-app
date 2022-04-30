@@ -10,6 +10,16 @@ export interface TaskDto {
   type: TaskType;
 }
 
+export class FindOneTaskDto implements Pick<TaskDto, 'id'> {
+  @IsUUID('4')
+  id: string;
+}
+
+export class DeleteTaskDto implements Pick<TaskDto, 'id'> {
+  @IsUUID('4')
+  id: string;
+}
+
 export class CreateTaskDto implements Omit<TaskDto, 'id'> {
   @IsNumber()
   accountId: number;

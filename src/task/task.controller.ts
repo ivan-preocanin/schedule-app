@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Post, Query } from '@nestjs/common';
 import { ApiEndpoint } from '../util';
-import { CreateTaskDto } from './task.dto';
+import { CreateTaskDto, DeleteTaskDto, FindOneTaskDto } from './task.dto';
 import { Task } from './task.entity';
 import { TaskService } from './task.service';
 
@@ -9,8 +9,8 @@ export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
   @Get(ApiEndpoint.TASK.FIND_ONE)
-  findOne(@Query('id') id: string): Promise<Task> {
-    return this.taskService.findOne(id);
+  findOne(@Query() findOneTaskDto: FindOneTaskDto): Promise<Task> {
+    return this.taskService.findOne(findOneTaskDto.id);
   }
 
   @Get(ApiEndpoint.TASK.FIND_BY_SCHEDULE_ID)
@@ -24,7 +24,7 @@ export class TaskController {
   }
 
   @Delete(ApiEndpoint.TASK.DELETE)
-  delete(@Query('id') id: string): Promise<void> {
-    return this.taskService.delete(id);
+  delete(@Query() deleteTaskDto: DeleteTaskDto): Promise<void> {
+    return this.taskService.delete(deleteTaskDto.id);
   }
 }

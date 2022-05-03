@@ -14,3 +14,6 @@ $ npm install
 $ docker compose up
 ```
 
+## API Docs
+
+You can find the API docs at `http://localhost:3000/api`

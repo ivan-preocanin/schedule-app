@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, Post, Query } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { ApiEndpoint } from '../util';
 import {
   CreateScheduleDto,
@@ -9,6 +10,7 @@ import { Schedule } from './schedule.entity';
 import { ScheduleService } from './schedule.service';
 
 @Controller(ApiEndpoint.SCHEDULE.BASE)
+@ApiTags('schedule')
 export class ScheduleController {
   constructor(private readonly scheduleService: ScheduleService) {}
 

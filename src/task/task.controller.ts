@@ -1,10 +1,12 @@
 import { Body, Controller, Delete, Get, Post, Query } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { ApiEndpoint } from '../util';
 import { CreateTaskDto, DeleteTaskDto, FindOneTaskDto } from './task.dto';
 import { Task } from './task.entity';
 import { TaskService } from './task.service';
 
 @Controller(ApiEndpoint.TASK.BASE)
+@ApiTags('task')
 export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 

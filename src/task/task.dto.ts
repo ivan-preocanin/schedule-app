@@ -41,7 +41,7 @@ export class CreateTaskDto implements Omit<TaskDto, 'id'> {
   @Min(0)
   duration: number;
 
-  @ApiProperty()
+  @ApiProperty({ enum: TaskType })
   @IsEnum(TaskType)
   type: TaskType;
 }
